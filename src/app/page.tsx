@@ -3,16 +3,17 @@ import { Inter } from "next/font/google";
 import {
   findPokemonImage,
   getPokemonType,
-  useAllPokemon,
-} from "@/hooks/use-pokemon";
+  getAllPokemon,
+  getPokemonFromRegion,
+  findPokemonDBImage,
+} from "@/hooks/use-pokeapi";
 import PokemonCard from "@/components/pokemon-card";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
-  const { isLoading, data, error } = useAllPokemon();
-  const type = getPokemonType("ivysaur");
-  console.log(JSON.stringify(type.data));
+  const { isLoading, data, error } = getAllPokemon();
+  // const { isLoading, data, error } = getPokemonFromRegion("kanto");
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -32,8 +33,8 @@ export default function Home() {
             <PokemonCard
               key={index}
               pokemonName={pokemon.name}
-              pokemonImgUrl={`${findPokemonImage(index + 1)}`}
-              // pokemonTypes={getPokemonType(pokemon.name)}
+              pokemonImgUrl={`${findPokemonDBImage(pokemon.name)}`}
+              // pokemonImgUrl={`${findPokemonImage(index + 1)}`}
             />
           ))}
         </div>

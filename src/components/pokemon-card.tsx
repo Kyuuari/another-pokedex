@@ -11,7 +11,7 @@ import Link from "next/link";
 
 type Props = {
   pokemonName: string;
-  pokemonImgUrl: string;
+  pokemonImgUrl?: string;
 };
 
 export default function PokemonCard({ pokemonName, pokemonImgUrl }: Props) {
@@ -19,11 +19,11 @@ export default function PokemonCard({ pokemonName, pokemonImgUrl }: Props) {
     <Link href={`/pokemon/${pokemonName}`}>
       <Card>
         <CardHeader>
-          <CardTitle>{pokemonName}</CardTitle>
+          <CardTitle className="uppercase">{pokemonName}</CardTitle>
         </CardHeader>
-        <CardContent>
+        <CardContent className="self-center justify-center flex">
           <Suspense fallback={<div>Loading...</div>}>
-            <img src={pokemonImgUrl} />
+            <img className="w-36 h-36" src={pokemonImgUrl} />
           </Suspense>
         </CardContent>
       </Card>
