@@ -8,6 +8,7 @@ import {
   CardTitle,
 } from "./ui/card";
 import Link from "next/link";
+import { capitalize } from "@/lib/utils";
 
 type Props = {
   pokemonName: string;
@@ -19,11 +20,15 @@ export default function PokemonCard({ pokemonName, pokemonImgUrl }: Props) {
     <Link href={`/pokemon/${pokemonName}`}>
       <Card>
         <CardHeader>
-          <CardTitle className="uppercase">{pokemonName}</CardTitle>
+          <CardTitle>{capitalize(pokemonName)}</CardTitle>
         </CardHeader>
         <CardContent className="self-center justify-center flex">
           <Suspense fallback={<div>Loading...</div>}>
-            <img className="w-36 h-36 object-contain" src={pokemonImgUrl} />
+            <img
+              className="w-36 h-36 object-contain"
+              src={pokemonImgUrl}
+              alt={`${pokemonName} image`}
+            />
           </Suspense>
         </CardContent>
       </Card>

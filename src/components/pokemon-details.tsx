@@ -7,6 +7,7 @@ import { AnimatedValue } from "./animated-value";
 import { StatsBar } from "./stats-bar";
 import { useGetSpeciesInfo } from "@/hooks/use-pokeapi";
 import { RatioBar } from "./ratio-bar";
+import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 
 type Props = {
   pokemonData: PokemonData;
@@ -35,94 +36,119 @@ export default function PokemonDetails({
   const catchRate = Math.round((100 / 255) * speciesInfo?.capture_rate!);
 
   return (
-    <div className="flex h-full flex-col gap-10 md:flex-row  md:grid-cols-2">
-      <div className="flex flex-col gap-2 min-w-fit">
-        <div className="flex text-center gap-4">
-          <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">
-            {capitalize(pokemonData.name)}
-          </h1>
-          <h2 className="scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight transition-colors first:mt-0">
-            #{pokemonData.id}
-          </h2>
-        </div>
-
-        <div className="">
-          {pokemonData.types.map((type, index) => (
-            <Badge key={index} type={`${type.type.name}`}>
-              {capitalize(type.type.name)}
-            </Badge>
-          ))}
-        </div>
-
-        <img
-          className="w-52 h-52 mix-blend-multiply bg-transparent my-4 object-contain"
-          src={pokemonImageURL}
-          alt="pokemon image"
-        />
-
-        <div className="flex h-20 items-center space-x-4 text-sm">
-          <div className="flex flex-col">
-            <p>Height</p>
+    <section className="flex h-full flex-col gap-10 md:flex-row  md:grid-cols-2">
+      <Card className="flex flex-col gap-8 min-w-fit md:flex-col">
+        <CardHeader className="flex flex-col gap-4 min-w-[30vw]">
+          <CardTitle className="flex flex-row gap-4">
+            <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">
+              {capitalize(pokemonData.name)}
+            </h1>
             <h2 className="scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight transition-colors first:mt-0">
-              <AnimatedValue round={2} value={pokemonData.height!} /> m
+              #{pokemonData.id}
             </h2>
+          </CardTitle>
+          <div>
+            {pokemonData.types.map((type, index) => (
+              <Badge key={index} type={`${type.type.name}`}>
+                {capitalize(type.type.name)}
+              </Badge>
+            ))}
           </div>
-
-          <Separator orientation="vertical" />
-          <div className="flex flex-col">
-            <p>Weight</p>
-            <h2 className="scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight transition-colors first:mt-0">
-              <AnimatedValue round={2} value={pokemonData.weight!} /> kg
-            </h2>
+          <div className="flex flex-col items-center">
+            <img
+              className="w-52 h-52 mix-blend-multiply bg-transparent my-4 object-contain"
+              src={pokemonImageURL}
+              alt="pokemon image"
+            />
           </div>
-        </div>
+        </CardHeader>
 
-        <div className="w-full ">
-          {pokemonData.stats.map((stats, index) => (
-            <div key={index}>
-              <p>
-                {capitalize(stats.stat.name)} :{" "}
-                <AnimatedValue round={0} value={stats.base_stat} />
-              </p>
-              <StatsBar value={stats.base_stat} />
+        <CardContent>
+          <div className="flex h-20 items-center space-x-4 text-sm">
+            <div className="flex flex-col">
+              <p>Height</p>
+              <h2 className="scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight transition-colors first:mt-0">
+                <AnimatedValue round={2} value={pokemonData.height!} /> m
+              </h2>
             </div>
-          ))}
-        </div>
-      </div>
-      <div>
-        <div>
+
+            <Separator orientation="vertical" />
+            <div className="flex flex-col">
+              <p>Weight</p>
+              <h2 className="scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight transition-colors first:mt-0">
+                <AnimatedValue round={2} value={pokemonData.weight!} /> kg
+              </h2>
+            </div>
+          </div>
+
+          <div className="w-full ">
+            {pokemonData.stats.map((stats, index) => (
+              <div key={index}>
+                <p>
+                  {capitalize(stats.stat.name)} :{" "}
+                  <AnimatedValue round={0} value={stats.base_stat} />
+                </p>
+                <StatsBar value={stats.base_stat} />
+              </div>
+            ))}
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* <aside> */}
+      <aside className="flex flex-col gap-4">
+        <>
           <h3 className="scroll-m-20 text-2xl font-semibold tracking-tight">
             Description
           </h3>
-          {enText && <p>{enText}</p>}
-          {jpText && <p>{jpText}</p>}
+          <div>
+            {enText && <p>{enText}</p>}
+            {jpText && <p>{jpText}</p>}
+          </div>
+        </>
 
+        <>
           <h3 className="scroll-m-20 text-2xl font-semibold tracking-tight">
             Abilities
           </h3>
-          {pokemonData.abilities.map((ability, index) => (
-            <p key={index}>{capitalize(ability.ability.name)}</p>
-          ))}
+          <div>
+            {pokemonData.abilities.map((ability, index) => (
+              <p key={index}>{capitalize(ability.ability.name)}</p>
+            ))}
+          </div>
+        </>
+
+        <>
           <h3 className="scroll-m-20 text-2xl font-semibold tracking-tight">
             Color
           </h3>
           <p>{speciesInfo?.color.name}</p>
+        </>
+
+        <>
           <h3 className="scroll-m-20 text-2xl font-semibold tracking-tight">
             Egg Group
           </h3>
           {speciesInfo?.egg_groups.map((group, index) => (
             <p key={index}>{group.name}</p>
           ))}
+        </>
+
+        <>
           <h3 className="scroll-m-20 text-2xl font-semibold tracking-tight">
             Gender Ratio
           </h3>
           <RatioBar value1={speciesInfo?.gender_rate!} />
+        </>
+
+        <>
           <h3 className="scroll-m-20 text-2xl font-semibold tracking-tight">
             Catch Rate
           </h3>
           <p>{catchRate}%</p>
-        </div>
-      </div>
-    </div>
+        </>
+      </aside>
+      {/* </aside> */}
+    </section>
   );
 }
