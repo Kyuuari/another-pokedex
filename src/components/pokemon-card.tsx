@@ -23,7 +23,7 @@ export default function PokemonCard({ pokemonName, pokemonImgUrl }: Props) {
         </CardHeader>
         <CardContent className="self-center justify-center flex">
           <Suspense fallback={<div>Loading...</div>}>
-            <img className="w-36 h-36" src={pokemonImgUrl} />
+            <img className="w-36 h-36 object-contain" src={pokemonImgUrl} />
           </Suspense>
         </CardContent>
       </Card>

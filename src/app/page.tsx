@@ -24,21 +24,22 @@ export default function Home() {
   }
 
   return (
-    <main className="">
-      {isLoading ? (
-        "Loading"
-      ) : (
-        <div className="grid grid-col-1 md:grid-cols-4">
-          {data?.map((pokemon, index) => (
-            <PokemonCard
-              key={index}
-              pokemonName={pokemon.name}
-              pokemonImgUrl={`${findPokemonDBImage(pokemon.name)}`}
-              // pokemonImgUrl={`${findPokemonImage(index + 1)}`}
-            />
-          ))}
-        </div>
-      )}
+    <main className="min-h-screen pt-28">
+      <article className="container">
+        {isLoading ? (
+          "Loading"
+        ) : (
+          <div className="grid grid-col-1 md:grid-cols-4">
+            {data?.map((pokemon, index) => (
+              <PokemonCard
+                key={index}
+                pokemonName={pokemon.name}
+                pokemonImgUrl={`${findPokemonDBImage(pokemon.name)}`}
+              />
+            ))}
+          </div>
+        )}
+      </article>
     </main>
   );
 }

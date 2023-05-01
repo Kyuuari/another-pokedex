@@ -9,6 +9,7 @@ interface AnimatedCounterEffectOptions {
   end: number;
   increment: number;
   ease: string;
+  round: number;
 }
 
 
@@ -36,7 +37,7 @@ export function counterAnimation(targets: any, config: AnimatedCounterEffectOpti
     modifiers: {
       innerText: function(innerText) {
         return gsap.utils.snap(config.increment, innerText)
-          .toFixed(2)
+          .toFixed(config.round)
           .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
       }
     },
@@ -53,7 +54,8 @@ gsap.registerEffect({
     end: 0,
     duration: 0.5,
     ease: "power1",
-    increment: 1
+    increment: 1,
+    round: 2,
   },
   effect: counterAnimation
 });

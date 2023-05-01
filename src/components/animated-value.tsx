@@ -1,11 +1,13 @@
+"use client";
 import { useEffect, useRef } from "react";
 import { gsap } from "@/lib/gsap/index";
 
 type Props = {
   value: number;
+  round?: number;
 };
 
-export const AnimatedValue = ({ value }: Props) => {
+export const AnimatedValue = ({ value, round }: Props) => {
   const valueRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -15,9 +17,11 @@ export const AnimatedValue = ({ value }: Props) => {
         {
           end: value,
           ease: "linear",
+          increment: 0.5,
+          round: round,
           // duration: 0.5,
-        },
-        "-=0.02"
+        }
+        // "-=0.02"
       );
     });
 
