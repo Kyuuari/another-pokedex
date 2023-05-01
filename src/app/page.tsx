@@ -1,18 +1,12 @@
 "use client";
 import { Inter } from "next/font/google";
-import {
-  findPokemonImage,
-  getPokemonType,
-  getAllPokemon,
-  getPokemonFromRegion,
-  findPokemonDBImage,
-} from "@/hooks/use-pokeapi";
+import { useGetAllPokemon, useFindPokemonDBImage } from "@/hooks/use-pokeapi";
 import PokemonCard from "@/components/pokemon-card";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
-  const { isLoading, data, error } = getAllPokemon();
+  const { isLoading, data, error } = useGetAllPokemon();
   // const { isLoading, data, error } = getPokemonFromRegion("kanto");
 
   if (isLoading) {
@@ -34,7 +28,7 @@ export default function Home() {
               <PokemonCard
                 key={index}
                 pokemonName={pokemon.name}
-                pokemonImgUrl={`${findPokemonDBImage(pokemon.name)}`}
+                pokemonImgUrl={`https://img.pokemondb.net/artwork/large/${pokemon.name}.jpg`}
               />
             ))}
           </div>

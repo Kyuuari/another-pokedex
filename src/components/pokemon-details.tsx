@@ -5,7 +5,7 @@ import { capitalize } from "@/lib/utils";
 
 import { AnimatedValue } from "./animated-value";
 import { StatsBar } from "./stats-bar";
-import { getSpeciesInfo } from "@/hooks/use-pokeapi";
+import { useGetSpeciesInfo } from "@/hooks/use-pokeapi";
 import { RatioBar } from "./ratio-bar";
 
 type Props = {
@@ -17,7 +17,7 @@ export default function PokemonDetails({
   pokemonData,
   pokemonImageURL,
 }: Props) {
-  const { data: speciesInfo } = getSpeciesInfo(pokemonData.species.url);
+  const { data: speciesInfo } = useGetSpeciesInfo(pokemonData.species.url);
   const { flavor_text_entries, color, egg_groups, gender_rate, capture_rate } =
     speciesInfo ?? {};
 

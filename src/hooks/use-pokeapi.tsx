@@ -5,7 +5,7 @@ import axios from "axios";
 
 const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
-export const getPokemon = (pokemonName: string) => {
+export const useGetPokemon = (pokemonName: string) => {
   return useQuery<PokemonData>({
     queryKey: ["pokemon", pokemonName],
     queryFn: async () => {
@@ -28,7 +28,7 @@ export const getPokemon = (pokemonName: string) => {
   });
 };
 
-export const getPokemonType = (pokemonName: string) => {
+export const useGetPokemonType = (pokemonName: string) => {
   return useQuery<PokemonType[]>({
     queryKey: ["pokemonType"],
     queryFn: async () => {
@@ -41,7 +41,7 @@ export const getPokemonType = (pokemonName: string) => {
   });
 };
 
-export const getPokemonFromRegion = (region: string) => {
+export const useGetPokemonFromRegion = (region: string) => {
   return useQuery<PokemonData[]>({
     queryKey: ["allPokemonFromRegion"],
     queryFn: async () => {
@@ -54,7 +54,7 @@ export const getPokemonFromRegion = (region: string) => {
   });
 };
 
-export const getAllPokemon = () => {
+export const useGetAllPokemon = () => {
   return useQuery<PokemonData[]>({
     queryKey: ["allPokemon"],
     queryFn: async () => {
@@ -72,17 +72,17 @@ export const getAllPokemon = () => {
 // https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png
 // https://img.pokemondb.net/artwork/large/${props.pokemon.name}.jpg
 
-export const findPokemonImage = (index: number) => {
+export const useFindPokemonImage = (index: number) => {
   // return `https://github.com/PokeAPI/sprites/blob/master/sprites/pokemon/${index}.png?raw=true`;
   return `https://github.com/PokeAPI/sprites/blob/master/sprites/pokemon/${index}.png?raw=true`;
 };
 
-export const findPokemonDBImage = (pokemonName: string) => {
+export const useFindPokemonDBImage = (pokemonName: string) => {
   // return `https://github.com/PokeAPI/sprites/blob/master/sprites/pokemon/${index}.png?raw=true`;
   return `https://img.pokemondb.net/artwork/large/${pokemonName}.jpg`;
 };
 
-export const getSpeciesInfo = (url: string) => {
+export const useGetSpeciesInfo = (url: string) => {
   return useQuery<SpeciesInfo>({
     queryKey: ["species", url],
     queryFn: async () => {
@@ -102,12 +102,12 @@ export const getSpeciesInfo = (url: string) => {
 };
 
 //TODO: wip hook
-export async function fetchData(params: string) {
-  const { data: pokemonData, isLoading: isLoadingPokemon } = await getPokemon(
-    params
-  );
-  const { data: speciesInfo, isLoading: isLoadingInfo } = await getSpeciesInfo(
-    pokemonData!.species.url
-  );
-  return { pokemonData, speciesInfo, isLoadingPokemon, isLoadingInfo };
-}
+// export async function fetchData(params: string) {
+//   const { data: pokemonData, isLoading: isLoadingPokemon } = await getPokemon(
+//     params
+//   );
+//   const { data: speciesInfo, isLoading: isLoadingInfo } = await getSpeciesInfo(
+//     pokemonData!.species.url
+//   );
+//   return { pokemonData, speciesInfo, isLoadingPokemon, isLoadingInfo };
+// }
