@@ -3,6 +3,7 @@ import "./globals.css";
 import { Inter } from "next/font/google";
 import QueryProvider from "@/components/query-provider";
 import SiteHeader from "@/components/site-header";
+import { SiteFooter } from "@/components/site-footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,6 +23,7 @@ export default function RootLayout({
         <body className={inter.className}>
           <SiteHeader />
           {children}
+          <SiteFooter />
         </body>
       </QueryProvider>
     </html>

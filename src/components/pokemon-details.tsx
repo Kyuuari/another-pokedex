@@ -29,23 +29,19 @@ export default function PokemonDetails({
     (text) => text.language.name === "ja-Hrkt"
   )?.flavor_text;
 
-  const femaleRate = speciesInfo?.gender_rate;
-  const genderRatioFemale = 12.5 * femaleRate!;
-  const genderRatioMale = 12.5 * (8 - femaleRate!);
-
   const catchRate = Math.round((100 / 255) * speciesInfo?.capture_rate!);
 
   return (
     <section className="flex h-full flex-col gap-10 md:flex-row  md:grid-cols-2">
-      <Card className="flex flex-col gap-8 min-w-fit md:flex-col">
-        <CardHeader className="flex flex-col gap-4 min-w-[30vw]">
-          <CardTitle className="flex flex-row gap-4">
-            <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">
+      <Card className="flex flex-col gap-8 md:min-w-fit md:flex-col">
+        <CardHeader className="flex flex-col gap-4 md:min-w-[30vw]">
+          <CardTitle className="flex flex-col md:flex-row gap-4">
+            <span className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">
               {capitalize(pokemonData.name)}
-            </h1>
-            <h2 className="scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight transition-colors first:mt-0">
+            </span>
+            <span className="scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight transition-colors first:mt-0">
               #{pokemonData.id}
-            </h2>
+            </span>
           </CardTitle>
           <div>
             {pokemonData.types.map((type, index) => (
@@ -96,18 +92,18 @@ export default function PokemonDetails({
       </Card>
 
       {/* <aside> */}
-      <aside className="flex flex-col gap-4">
-        <>
+      <aside className="flex flex-col gap-4 p-6">
+        <div>
           <h3 className="scroll-m-20 text-2xl font-semibold tracking-tight">
             Description
           </h3>
-          <div>
+          <div className="flex flex-col gap-6">
             {enText && <p>{enText}</p>}
             {jpText && <p>{jpText}</p>}
           </div>
-        </>
+        </div>
 
-        <>
+        <div>
           <h3 className="scroll-m-20 text-2xl font-semibold tracking-tight">
             Abilities
           </h3>
@@ -116,37 +112,39 @@ export default function PokemonDetails({
               <p key={index}>{capitalize(ability.ability.name)}</p>
             ))}
           </div>
-        </>
+        </div>
 
-        <>
-          <h3 className="scroll-m-20 text-2xl font-semibold tracking-tight">
-            Color
-          </h3>
-          <p>{speciesInfo?.color.name}</p>
-        </>
-
-        <>
-          <h3 className="scroll-m-20 text-2xl font-semibold tracking-tight">
-            Egg Group
-          </h3>
-          {speciesInfo?.egg_groups.map((group, index) => (
-            <p key={index}>{group.name}</p>
-          ))}
-        </>
-
-        <>
+        <div>
           <h3 className="scroll-m-20 text-2xl font-semibold tracking-tight">
             Gender Ratio
           </h3>
           <RatioBar value1={speciesInfo?.gender_rate!} />
-        </>
+        </div>
 
-        <>
-          <h3 className="scroll-m-20 text-2xl font-semibold tracking-tight">
-            Catch Rate
-          </h3>
-          <p>{catchRate}%</p>
-        </>
+        <div className="flex flex-col md:flex-row gap-6">
+          <div>
+            <h3 className="scroll-m-20 text-2xl font-semibold tracking-tight">
+              Egg Group
+            </h3>
+            {speciesInfo?.egg_groups.map((group, index) => (
+              <p key={index}>{capitalize(group.name)}</p>
+            ))}
+          </div>
+          <Separator orientation="vertical" />
+          <div>
+            <h3 className="scroll-m-20 text-2xl font-semibold tracking-tight">
+              Catch Rate
+            </h3>
+            <p>{catchRate}%</p>
+          </div>
+          <Separator orientation="vertical" />
+          <div>
+            <h3 className="scroll-m-20 text-2xl font-semibold tracking-tight">
+              Color
+            </h3>
+            <p>{speciesInfo?.color.name}</p>
+          </div>
+        </div>
       </aside>
       {/* </aside> */}
     </section>

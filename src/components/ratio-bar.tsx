@@ -12,14 +12,12 @@ export const RatioBar = ({ value1 }: Props) => {
   //   const percentage = (genderRatioMale / genderRatioFemale) * 100;
 
   return (
-    // <div>
-    //   {/* <div className="bg-blue-500 w-full h-4 rounded-full overflow-hidden">
-    //     <div
-    //       className="bg-pink-600 h-full"
-    //       style={{ width: `${percentage}%` }}
-    //     ></div>
-    //   </div> */}
-    <span>{`Female: ${genderRatioFemale}% | Male: ${genderRatioMale}%`}</span>
-    // </div>
+    <>
+      {femaleRate > 0 ? (
+        <span>{`Female: ${genderRatioFemale}% | Male: ${genderRatioMale}%`}</span>
+      ) : (
+        <span>Genderless</span>
+      )}
+    </>
   );
 };
