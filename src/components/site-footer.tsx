@@ -9,62 +9,7 @@ export function SiteFooter() {
           {/* <Icons.logo className="hidden h-6 w-6 md:inline-block" /> */}
           <p className="text-center text-sm leading-loose text-muted-foreground md:text-left">
             Made with ❤️
-            {/* <a
-              href={"https://twitter.com/Kyu_uari"}
-              target="_blank"
-              rel="noreferrer"
-              className="font-medium underline underline-offset-4"
-            >
-              Chester Cari
-            </a> */}
           </p>
-          <div className="flex flex-row justify-center gap-4 w-full">
-            <a
-              href={"https://github.com/Kyuuari"}
-              target="_blank"
-              rel="noreferrer"
-              aria-label="github link"
-              className="font-medium underline underline-offset-4 hover:opacity-30"
-            >
-              <Icons.gitHub className=" h-6 w-6 md:inline-block" />
-            </a>
-            <a
-              href={"https://www.behance.net/chestercari"}
-              target="_blank"
-              rel="noreferrer"
-              aria-label="behance link"
-              className="font-medium underline underline-offset-4 hover:opacity-30"
-            >
-              <Icons.behance className=" h-6 w-6 md:inline-block" />
-            </a>
-            <a
-              href={"https://www.linkedin.com/in/chestercari/"}
-              target="_blank"
-              rel="noreferrer"
-              aria-label="linkedin link"
-              className="font-medium underline underline-offset-4 hover:opacity-30"
-            >
-              <Icons.linkedin className=" h-6 w-6 md:inline-block" />
-            </a>
-            <a
-              href={"https://www.instagram.com/kyuuari/"}
-              target="_blank"
-              rel="noreferrer"
-              aria-label="instagram link"
-              className="font-medium underline underline-offset-4 hover:opacity-30"
-            >
-              <Icons.instagram className=" h-6 w-6 md:inline-block" />
-            </a>
-            <a
-              href={"https://twitter.com/Kyu_uari"}
-              target="_blank"
-              rel="noreferrer"
-              aria-label="twitter link"
-              className="font-medium underline underline-offset-4 hover:opacity-30"
-            >
-              <Icons.twitter className=" h-6 w-6 md:inline-block" />
-            </a>
-          </div>
         </div>
       </div>
     </footer>

@@ -3,8 +3,6 @@ import { PokemonData, PokemonType, SpeciesInfo } from "@/types";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
-const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
-
 export const useGetPokemon = (pokemonName: string) => {
   return useQuery<PokemonData>({
     queryKey: ["pokemon", pokemonName],
@@ -36,7 +34,6 @@ export const useGetPokemonType = (pokemonName: string) => {
       );
       return data.types;
     },
-    // select: (data) => {...data},
   });
 };
 
@@ -44,7 +41,6 @@ export const useGetPokemonFromRegion = (region: string) => {
   return useQuery<PokemonData[]>({
     queryKey: ["allPokemonFromRegion"],
     queryFn: async () => {
-      // await wait(2000);
       const { data } = await axios.get(
         `https://pokeapi.co/api/v2/pokedex/${region}/?limit=8`
       );
@@ -57,7 +53,6 @@ export const useGetAllPokemon = () => {
   return useQuery<PokemonData[]>({
     queryKey: ["allPokemon"],
     queryFn: async () => {
-      // await wait(2000);
       const { data } = await axios.get(
         "https://pokeapi.co/api/v2/pokemon/?limit=8"
       );
@@ -70,7 +65,6 @@ export const useGetAllPokemonPage = (limit: number, offset: number) => {
   return useQuery<PokemonData[]>({
     queryKey: ["allPokemon", limit, offset],
     queryFn: async () => {
-      // await wait(2000);
       const { data } = await axios.get(
         `https://pokeapi.co/api/v2/pokemon/?limit=${limit}&offset=${offset}`
       );
@@ -79,17 +73,11 @@ export const useGetAllPokemonPage = (limit: number, offset: number) => {
   });
 };
 
-// const pokemonIndex = url.split("/")[url.split("/").length - 2];
-// const imageUrl = `https://github.com/PokeAPI/sprites/blob/master/sprites/pokemon/${pokemonIndex}.png?raw=true`;
-// https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png
-// https://img.pokemondb.net/artwork/large/${props.pokemon.name}.jpg
-
 export const useFindPokemonImage = (index: number) => {
   return `https://github.com/PokeAPI/sprites/blob/master/sprites/pokemon/${index}.png?raw=true`;
 };
 
-export const useFindPokemonDBImage = (pokemonName: string) => {
-  // return `https://github.com/PokeAPI/sprites/blob/master/sprites/pokemon/${index}.png?raw=true`;
+export const findPokemonDBImage = (pokemonName: string) => {
   return `https://img.pokemondb.net/artwork/large/${pokemonName}.jpg`;
 };
 
@@ -100,15 +88,16 @@ export const useGetSpeciesInfo = (url: string) => {
       const { data } = await axios.get(url);
       return data as SpeciesInfo;
     },
-    select: (data) => ({
-      gender_rate: data.gender_rate,
-      capture_rate: data.capture_rate,
-      hatch_counter: data.hatch_counter,
-      egg_groups: data.egg_groups,
-      color: data.color,
-      flavor_text_entries: data.flavor_text_entries,
-      form_descriptions: data.form_descriptions,
-    }),
+    select: (data) =>
+      ({
+        gender_rate: data.gender_rate,
+        capture_rate: data.capture_rate,
+        hatch_counter: data.hatch_counter,
+        egg_groups: data.egg_groups,
+        color: data.color,
+        flavor_text_entries: data.flavor_text_entries,
+        form_descriptions: data.form_descriptions,
+      } || {}),
   });
 };
 

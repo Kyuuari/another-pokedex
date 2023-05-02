@@ -1,15 +1,13 @@
 import React from "react";
 
 type Props = {
-  value1: number;
+  value: number;
 };
 
-export const RatioBar = ({ value1 }: Props) => {
-  const femaleRate = value1;
+export const RatioBar = ({ value }: Props) => {
+  const femaleRate = value;
   const genderRatioFemale = 12.5 * femaleRate;
   const genderRatioMale = 12.5 * (8 - femaleRate);
-
-  //   const percentage = (genderRatioMale / genderRatioFemale) * 100;
 
   return (
     <>

@@ -1,23 +1,17 @@
 "use client";
 import { useEffect, useState } from "react";
-import { Inter } from "next/font/google";
-import {
-  useGetAllPokemon,
-  useFindPokemonDBImage,
-  useGetAllPokemonPage,
-} from "@/hooks/use-pokeapi";
+import { useGetAllPokemonPage } from "@/hooks/use-pokeapi";
 import usePaginationStore from "@/components/store/store";
 import { PokemonData } from "@/types";
-import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import PokemonCard from "@/components/pokemon-card";
-import { CommandSearch } from "@/components/command-search";
 
-const inter = Inter({ subsets: ["latin"] });
+import Loading from "@/components/loading";
+import PokemonCard from "@/components/pokemon/pokemon-card";
 
 export default function Home() {
-  const { currentPage, itemsPerPage, setCurrentPage, updatePagePosition } =
+  const { currentPage, itemsPerPage, updatePagePosition } =
     usePaginationStore();
+
   const {
     isLoading,
     data: pokemonPage,
@@ -28,11 +22,10 @@ export default function Home() {
 
   useEffect(() => {
     setPokemonList(pokemonPage ?? []);
-    console.log("pokemon list set");
   }, [pokemonPage]);
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <Loading />;
   }
 
   if (error) {
@@ -56,9 +49,13 @@ export default function Home() {
           </div>
         )}
 
-        <div className="fixed bottom-0 right-0 mb-4 mr-4">
-          <Button onClick={() => updatePagePosition(-itemsPerPage)}>-</Button>
-          <Button onClick={() => updatePagePosition(itemsPerPage)}>+</Button>
+        <div className="fixed bottom-0 flex flex-row gap-2 md:bottom-[-10] right-4 mb-4 mr-4">
+          <Button size={"lg"} onClick={() => updatePagePosition(-itemsPerPage)}>
+            -
+          </Button>
+          <Button size={"lg"} onClick={() => updatePagePosition(itemsPerPage)}>
+            +
+          </Button>
         </div>
       </article>
     </main>
