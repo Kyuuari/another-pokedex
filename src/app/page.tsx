@@ -11,6 +11,7 @@ import { PokemonData } from "@/types";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import PokemonCard from "@/components/pokemon-card";
+import { CommandSearch } from "@/components/command-search";
 
 const inter = Inter({ subsets: ["latin"] });
 
