@@ -2,7 +2,6 @@ import PokemonDetails from "@/components/pokemon/pokemon-details";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
-//TODO: turn this page to server component
 export default function Page({ params }: { params: { slug: string } }) {
   return (
     <main className="min-h-screen flex pt-14 justify-center items-center">

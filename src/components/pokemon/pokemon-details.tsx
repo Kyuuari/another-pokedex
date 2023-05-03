@@ -1,10 +1,9 @@
 "use client";
 import PokedataCard from "./pokedata-card";
 import SpeciesInfo from "./species-info";
-import { Suspense, useState } from "react";
+import { Suspense } from "react";
 import Loading from "../loading";
 import { findPokemonDBImage, useGetPokemon } from "@/hooks/use-pokeapi";
-import { PokemonData } from "@/types";
 
 type Props = {
   pokemonName: string;
@@ -12,15 +11,12 @@ type Props = {
 
 export default function PokemonDetails({ pokemonName }: Props) {
   const { data, isLoading, isSuccess } = useGetPokemon(pokemonName);
-  // const [pokemonData, setPokemonData] = useState<PokemonData>();
-
   if (isLoading) {
     return <Loading />;
   }
 
   if (isSuccess) {
     console.log(data);
-    // setPokemonData(data);
   }
 
   return (
