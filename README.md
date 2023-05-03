@@ -11,19 +11,16 @@ yes, this is another pokedex app, but after learning from my previous projects, 
 - Caching
 - Animations
 - Pagination
-
+- Search
 
 **TODO**:
 
-- Search
+
 - Favorites
 - PWA
 
 
 **Current Status** : Work In Progress
-
-
-
 
 
 ## Tech Stack
@@ -34,6 +31,8 @@ In this project I utilized:
 * Next-13
 * Gsap
 * Zustand
+* Tan-stack React Router
+* Shadcn/ui
 
 
 
