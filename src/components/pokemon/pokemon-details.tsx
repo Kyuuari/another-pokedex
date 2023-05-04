@@ -4,19 +4,21 @@ import SpeciesInfo from "./species-info";
 import { Suspense } from "react";
 import Loading from "../loading";
 import { findPokemonDBImage, useGetPokemon } from "@/hooks/use-pokeapi";
+import { isError } from "@tanstack/react-query";
 
 type Props = {
   pokemonName: string;
 };
 
 export default function PokemonDetails({ pokemonName }: Props) {
-  const { data, isLoading, isSuccess } = useGetPokemon(pokemonName);
+  const { data, isLoading, isError } = useGetPokemon(pokemonName);
+
   if (isLoading) {
     return <Loading />;
   }
 
-  if (isSuccess) {
-    console.log(data);
+  if (isError) {
+    return <div>No Data Found</div>;
   }
 
   return (

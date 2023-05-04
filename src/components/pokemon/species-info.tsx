@@ -24,6 +24,7 @@ export default function SpeciesInfo({ pokemonData }: Props) {
   const jpText = flavor_text_entries?.find(
     (text) => text.language.name === "ja-Hrkt"
   )?.flavor_text;
+
   const catchRate = Math.round((100 / 255) * speciesInfo?.capture_rate!);
 
   if (isLoading) {
@@ -83,7 +84,7 @@ export default function SpeciesInfo({ pokemonData }: Props) {
               <h3 className="scroll-m-20 text-2xl font-semibold tracking-tight">
                 Color
               </h3>
-              <p>{speciesInfo.color.name}</p>
+              <p>{capitalize(speciesInfo.color.name)}</p>
             </div>
           </div>
         </aside>

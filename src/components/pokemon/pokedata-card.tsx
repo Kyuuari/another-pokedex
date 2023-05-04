@@ -1,4 +1,3 @@
-"use client";
 import React, { Suspense } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 import { AnimatedValue } from "../animated-value";

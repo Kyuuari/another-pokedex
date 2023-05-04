@@ -18,13 +18,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <QueryProvider>
-        <body className={inter.className}>
-          <SiteHeader />
-          {children}
-          <SiteFooter />
-        </body>
-      </QueryProvider>
+      <body className={inter.className}>
+        <SiteHeader />
+        <QueryProvider>{children}</QueryProvider>
+        <SiteFooter />
+      </body>
     </html>
   );
 }

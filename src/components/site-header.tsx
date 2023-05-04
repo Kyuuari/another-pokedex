@@ -1,4 +1,3 @@
-"use client";
 import React from "react";
 import MainNav from "./main-nav";
 import { CommandSearch } from "./command-search";

@@ -80,17 +80,6 @@ export const Icons = {
              412.60,332.02 332.02,412.60 332.02,512.00 Z"
       />
     </svg>
-    // <svg
-    //   viewBox="0 0 24 24"
-    //   fill="currentColor"
-    //   stroke="currentColor"
-    //   strokeWidth="2"
-    //   strokeLinecap="round"
-    //   strokeLinejoin="round"
-    //   {...props}
-    // >
-    //   <circle cx="12" cy="12" r="10"></circle>
-    // </svg>
   ),
   close: X,
   spinner: Loader2,
