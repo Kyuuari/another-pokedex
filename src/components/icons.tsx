@@ -41,7 +41,7 @@ export const Icons = {
         id="pkmn-icon"
         fill="#000000"
         stroke="none"
-        stroke-width="1"
+        strokeWidth="1"
         d="M 512.00,359.18
            C 512.00,359.18 512.00,359.18 512.00,359.18
              596.40,359.18 664.81,427.60 664.82,512.00

@@ -32,7 +32,7 @@ export default function PokedataCard({ pokemonData, pokemonImageURL }: Props) {
           ))}
         </div>
         <div className="flex flex-col items-center">
-          <Suspense fallback={<>Loading...</>}>
+          <Suspense fallback={<div>Loading...</div>}>
             <img
               className="w-52 h-52 mix-blend-multiply bg-transparent my-4 object-contain"
               src={pokemonImageURL}
