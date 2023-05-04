@@ -41,7 +41,7 @@ export const Icons = {
         id="pkmn-icon"
         fill="#000000"
         stroke="none"
-        stroke-width="1"
+        strokeWidth="1"
         d="M 512.00,359.18
            C 512.00,359.18 512.00,359.18 512.00,359.18
              596.40,359.18 664.81,427.60 664.82,512.00
@@ -80,17 +80,6 @@ export const Icons = {
              412.60,332.02 332.02,412.60 332.02,512.00 Z"
       />
     </svg>
-    // <svg
-    //   viewBox="0 0 24 24"
-    //   fill="currentColor"
-    //   stroke="currentColor"
-    //   strokeWidth="2"
-    //   strokeLinecap="round"
-    //   strokeLinejoin="round"
-    //   {...props}
-    // >
-    //   <circle cx="12" cy="12" r="10"></circle>
-    // </svg>
   ),
   close: X,
   spinner: Loader2,
