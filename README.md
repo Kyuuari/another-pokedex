@@ -31,8 +31,8 @@ In this project I utilized:
 * Next-13
 * Gsap
 * Zustand
-* Tan-stack React Router
-* Shadcn/ui
+* [Tanstack React Query](https://tanstack.com/query/latest/)
+* [Shadcn/ui](https://ui.shadcn.com/)
 
 
 
